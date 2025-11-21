@@ -3,6 +3,7 @@ ShelfSmart Backend - FastAPI Application
 Retail shelf monitoring using CLIP for detection and Graph logic for misplacements.
 """
 
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -12,21 +13,6 @@ import json
 import os
 from typing import Dict, List, Any
 import networkx as nx
-
-app = FastAPI(
-    title="ShelfSmart API",
-    description="Retail shelf monitoring using CLIP for detection and Graph logic for misplacements",
-    version="1.0.0"
-)
-
-# Configure CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with specific origins
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 # Path to the graph database
 GRAPH_DB_PATH = os.path.join(os.path.dirname(__file__), "graph_db.json")
@@ -63,10 +49,31 @@ def load_graph_db():
         print(f"Error loading graph database: {e}")
 
 
-@app.on_event("startup")
-async def startup_event():
-    """Load graph database on startup"""
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Lifespan context manager for startup and shutdown events"""
+    # Startup: Load graph database
     load_graph_db()
+    yield
+    # Shutdown: cleanup if needed
+    print("Shutting down ShelfSmart API")
+
+
+app = FastAPI(
+    title="ShelfSmart API",
+    description="Retail shelf monitoring using CLIP for detection and Graph logic for misplacements",
+    version="1.0.0",
+    lifespan=lifespan
+)
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with specific origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")

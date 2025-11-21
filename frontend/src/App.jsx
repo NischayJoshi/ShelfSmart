@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 
+// API configuration - can be moved to environment variable
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+
 function App() {
   const [selectedFile, setSelectedFile] = useState(null)
   const [previewUrl, setPreviewUrl] = useState(null)
@@ -11,7 +14,7 @@ function App() {
 
   // Fetch available shelves on component mount
   useEffect(() => {
-    fetch('http://localhost:8000/shelves')
+    fetch(`${API_BASE_URL}/shelves`)
       .then(res => res.json())
       .then(data => {
         setShelves(data.shelves || [])
@@ -53,7 +56,7 @@ function App() {
       formData.append('file', selectedFile)
       formData.append('shelf_id', selectedShelf)
 
-      const response = await fetch('http://localhost:8000/analyze', {
+      const response = await fetch(`${API_BASE_URL}/analyze`, {
         method: 'POST',
         body: formData,
       })

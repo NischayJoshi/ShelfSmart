@@ -59,7 +59,6 @@ def load_clip_model():
     try:
         print("Loading CLIP model (openai/clip-vit-base-patch32)...")
         # Try to load with a timeout
-        import os
         os.environ['HF_HUB_OFFLINE'] = '0'  # Try online first
         clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
         clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")

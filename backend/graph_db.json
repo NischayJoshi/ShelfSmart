@@ -1,0 +1,32 @@
+{
+  "shelf_A1": {
+    "expected_product": "coke_can",
+    "neighbors": ["pepsi_can", "sprite_bottle"],
+    "zone_coordinates": [10, 20, 150, 200]
+  },
+  "shelf_A2": {
+    "expected_product": "pepsi_can",
+    "neighbors": ["coke_can", "dr_pepper_can"],
+    "zone_coordinates": [170, 20, 150, 200]
+  },
+  "shelf_B1": {
+    "expected_product": "lays_chips",
+    "neighbors": ["doritos_chips", "pringles_chips"],
+    "zone_coordinates": [10, 230, 150, 200]
+  },
+  "shelf_B2": {
+    "expected_product": "doritos_chips",
+    "neighbors": ["lays_chips", "cheetos_chips"],
+    "zone_coordinates": [170, 230, 150, 200]
+  },
+  "shelf_C1": {
+    "expected_product": "milk_carton",
+    "neighbors": ["yogurt_cup", "cream_bottle"],
+    "zone_coordinates": [10, 440, 150, 200]
+  },
+  "shelf_C2": {
+    "expected_product": "yogurt_cup",
+    "neighbors": ["milk_carton", "cheese_block"],
+    "zone_coordinates": [170, 440, 150, 200]
+  }
+}

@@ -57,3 +57,7 @@ Thumbs.db
 *.log
 *.tmp
 /tmp/
+
+# Test images (except README)
+test-images/*
+!test-images/README.md

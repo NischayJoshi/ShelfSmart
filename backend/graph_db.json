@@ -1,0 +1,67 @@
+{
+  "products": [
+    {
+      "id": "prod_001",
+      "name": "Coca Cola 500ml",
+      "category": "Beverages",
+      "expected_location": "shelf_top_left"
+    },
+    {
+      "id": "prod_002",
+      "name": "Pepsi 500ml",
+      "category": "Beverages",
+      "expected_location": "shelf_top_right"
+    },
+    {
+      "id": "prod_003",
+      "name": "Lay's Chips Classic",
+      "category": "Snacks",
+      "expected_location": "shelf_middle_left"
+    },
+    {
+      "id": "prod_004",
+      "name": "Doritos Nacho",
+      "category": "Snacks",
+      "expected_location": "shelf_middle_right"
+    },
+    {
+      "id": "prod_005",
+      "name": "Milk 1L",
+      "category": "Dairy",
+      "expected_location": "shelf_bottom_left"
+    },
+    {
+      "id": "prod_006",
+      "name": "Yogurt Strawberry",
+      "category": "Dairy",
+      "expected_location": "shelf_bottom_right"
+    }
+  ],
+  "relationships": [
+    {
+      "from": "prod_001",
+      "to": "prod_002",
+      "type": "similar_category"
+    },
+    {
+      "from": "prod_003",
+      "to": "prod_004",
+      "type": "similar_category"
+    },
+    {
+      "from": "prod_005",
+      "to": "prod_006",
+      "type": "similar_category"
+    },
+    {
+      "from": "prod_001",
+      "to": "prod_003",
+      "type": "often_bought_together"
+    },
+    {
+      "from": "prod_002",
+      "to": "prod_004",
+      "type": "often_bought_together"
+    }
+  ]
+}

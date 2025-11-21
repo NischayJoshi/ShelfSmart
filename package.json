@@ -1,0 +1,26 @@
+{
+  "name": "shelfsmart",
+  "version": "1.0.0",
+  "description": "Retail shelf monitoring using CLIP for detection and Graph logic for misplacements",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "frontend": "cd frontend && npm run dev",
+    "backend": "cd backend && uvicorn main:app --reload",
+    "install-frontend": "cd frontend && npm install"
+  },
+  "keywords": [
+    "shelf",
+    "monitoring",
+    "retail",
+    "CLIP",
+    "graph"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17"
+  }
+}
